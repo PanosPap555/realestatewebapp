@@ -16,9 +16,12 @@ import ViewUser from './pages/ViewUser'
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
-  const [username, setUsername] = useState('Username');
 
-  /** popups */
+  /* Username, Email */
+  const [username, setUsername] = useState('Username');
+  //const [email, setEmail] = useState('Email');
+
+  /* popups */
   const [popupLogin, setPopupLogin] = useState(false);
   const [popupRegister, setPopupRegister] = useState(false);
   const [popupUser, setPopupUser] = useState(false);
@@ -48,6 +51,7 @@ function App() {
         /** apply jwtoken to all http requests (resets after reload) */
         axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
         setUsername(localStorage.getItem('username'))
+        //setEmail(localStorage.getItem('email'))
         setAuthenticated(true)
       }
     }
@@ -68,8 +72,7 @@ function App() {
       {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} username={username} />)}
       {popupLogin || popupRegister || popupUser ? (<div className="overlay-popup" />) : null}
       <div className="App">
-        {/*<div className="overlay" />*/}
-
+        <div className="overlay" />
         <Navbar authenticated={authenticated} username={username} setPopupUser={setPopupUser} />
         <Router>
           <Routes>
@@ -81,7 +84,8 @@ function App() {
           <Routes>
             <Route
               path="/ViewUser"
-              element={<ViewUser />}
+              //Add email here when you should
+              element={<ViewUser authenticated={authenticated} username={username}/>}
             />
           </Routes>
         </Router>
