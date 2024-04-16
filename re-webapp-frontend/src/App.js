@@ -11,6 +11,7 @@ import Navbar from './components/Navbar'
 import PopupRegister from './components/PopupRegister'
 import PopupLogin from './components/PopupLogin'
 import PopupUser from './components/PopupUser'
+import Details from './components/Details.js';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -66,7 +67,7 @@ function App() {
       {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} username={username} />)}
       {popupLogin || popupRegister || popupUser ? (<div className="overlay-popup" />) : null}
       <div className="App">
-        <div className="overlay" />
+        
         <Navbar authenticated={authenticated} username={username} setPopupUser={setPopupUser} />
         <Router>
           <Routes>
@@ -84,5 +85,6 @@ function App() {
 export default App;
 
 /**
+ * <div className="overlay" />
  * <Home authenticated={authenticated} setPopupLogin={setPopupLogin} setPopupRegister={setPopupRegister} />
  */
