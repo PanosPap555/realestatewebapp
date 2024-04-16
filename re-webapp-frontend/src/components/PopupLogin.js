@@ -64,17 +64,19 @@ export default function PopupLogin({ onClose, setAuthenticated, setUsername }) {
                 <form onSubmit={(e) => handleLogin(e)}>
                     <div className="mb-3">
                         <label htmlFor="input-username" className="form-label">Username</label>
-                        <input placeholder="Username" type="text" className="form-control" id="username" />
+                        <input placeholder="Username" type="text" className="form-control" id="username" required />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="input-password" className="form-label">Password</label>
-                        <input placeholder="Password" type="password" className="form-control" id="password" />
+                        <input placeholder="Password" type="password" className="form-control" id="password" required />
                     </div>
                     <div>
                         <label className="message-label"></label>
                     </div>
-                    <button type="submit" className="btn btn-dark login-btn">Log In</button>
-                    <button type="button" className="btn btn-dark close-btn" onClick={onClose}>Close</button>
+                    <div className="btns">
+                        <button type="submit" className="btn btn-dark login-btn">Log In</button>
+                        <button type="button" className="btn btn-dark close-btn" onClick={onClose}>Close</button>
+                    </div>
                 </form>
             </div>
         </div>

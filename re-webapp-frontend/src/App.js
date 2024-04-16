@@ -12,6 +12,8 @@ import PopupRegister from './components/PopupRegister'
 import PopupLogin from './components/PopupLogin'
 import PopupUser from './components/PopupUser'
 
+//import ViewUser from './pages/ViewUser'
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [username, setUsername] = useState('Username');
@@ -63,7 +65,7 @@ function App() {
     <>
       {popupLogin && (<PopupLogin onClose={closePopupLogin} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
       {popupRegister && (<PopupRegister onClose={closePopupRegister} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
-      {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} />)}
+      {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} username={username} />)}
       {popupLogin || popupRegister || popupUser ? (<div className="overlay-popup" />) : null}
       <div className="App">
         <div className="overlay" />

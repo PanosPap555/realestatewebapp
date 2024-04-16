@@ -62,25 +62,27 @@ export default function PopupRegister({ onClose, setAuthenticated, setUsername }
                 <form onSubmit={(e) => handleRegister(e)}>
                     <div className="mb-3">
                         <label htmlFor="input-username" className="form-label">Username</label>
-                        <input placeholder="Username" type="text" className="form-control" id="username" />
+                        <input placeholder="Username" type="text" className="form-control" id="username" required />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="input-email" className="form-label">E-mail</label>
-                        <input placeholder="E-mail" type="email" className="form-control" id="email" />
+                        <input placeholder="E-mail" type="email" className="form-control" id="email" required />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="input-password" className="form-label">Password</label>
-                        <input placeholder="Password" type="password" className="form-control" id="password" />
+                        <input placeholder="Password" type="password" className="form-control" id="password" required />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="input-repeat-password" className="form-label">Repeat Password</label>
-                        <input placeholder="Repeat Password" type="password" className="form-control" id="password-repeat" />
+                        <input placeholder="Repeat Password" type="password" className="form-control" id="password-repeat" required />
                     </div>
                     <div>
                         <label className="message-label"></label>
                     </div>
-                    <button type="submit" className="btn btn-dark register-btn">Sign Up</button>
-                    <button type="button" className="btn btn-dark close-btn" onClick={onClose}>Close</button>
+                    <div className="btns">
+                        <button type="submit" className="btn btn-dark register-btn">Sign Up</button>
+                        <button type="button" className="btn btn-dark close-btn" onClick={onClose}>Close</button>
+                    </div>
                 </form>
             </div>
         </div>
