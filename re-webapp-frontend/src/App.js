@@ -13,7 +13,7 @@ import PopupLogin from './components/PopupLogin'
 import PopupUser from './components/PopupUser'
 
 import ViewUser from './pages/ViewUser'
-//import ViewUserListing from './pages/ViewUserListing'
+import ViewUserListing from './pages/ViewUserListing'
 
 
 function App() {
@@ -85,6 +85,12 @@ function App() {
             <Route
               path="/ViewUser"
               element={<ViewUser authenticated={authenticated} username={username} />}
+            />
+          </Routes>
+          <Routes>
+            <Route
+              path="/ViewUserListing"
+              element={<ViewUserListing authenticated={authenticated} username={username} />}
             />
           </Routes>
         </Router>
