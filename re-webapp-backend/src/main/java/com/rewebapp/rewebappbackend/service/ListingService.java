@@ -20,9 +20,9 @@ public class ListingService
 {
     private final ListingRepo listingRepo;
 
-    public List<ListingResponse> getListings(String query) {
+    public List<ListingResponse> getListings(String query, Integer pageNumber) {
         /* page_idx = 0, page_len = 5, sort by price */
-        Pageable pageable = PageRequest.of(0, 5, Sort.by("price").ascending());
+        Pageable pageable = PageRequest.of(pageNumber, 5, Sort.by("price").ascending());
         try{
             List<ListingResponse> response = new ArrayList<>();
             /* fetch data */
