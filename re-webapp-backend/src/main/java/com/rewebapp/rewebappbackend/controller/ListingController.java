@@ -24,8 +24,8 @@ public class ListingController {
     }
 
     @GetMapping("/details/{id}")
-    public ResponseEntity<DetailsResponse> details(@PathVariable Long id){
-        return ResponseEntity.ok(listingService.getDetails(id));
+    public ResponseEntity<DetailsResponse> details(@PathVariable String id){
+        return ResponseEntity.ok(listingService.getDetails(Long.parseLong(id)));
     }
 
     @PostMapping("/add-listing")

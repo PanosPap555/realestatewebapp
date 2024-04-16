@@ -8,22 +8,16 @@ export default function ListingDetailsPopup({ onClose, title, description, price
     const [longitude, setLongitude] = useState(0);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
+    const [id, setId] = useState("1");
+    const [componentMounted, setComponentMounted] = useState(false);
 
     useEffect(() => {
-        fetchDetails(1);
-        
-    }, [])
-
-    const fetchDetails = async (id) => {
-        
-        console.log(id)
+        setComponentMounted(true);
+        const fetchDetails = async() => {
+        console.log("useEffect executed");
         try {
-            const response = await axios.get("http://localhost:8080/details", {
-                params: {
-                    id: id
-                }
-            });
-
+            const response = await axios.get(`http://localhost:8080/details/${id}`);
+            console.log(response.data.address)
             if (response.data.errorCode === null) {
                 setAddress(response.data.address);
                 setLatitude(response.data.latitude);
@@ -33,9 +27,12 @@ export default function ListingDetailsPopup({ onClose, title, description, price
             }
         } catch (error) {
             console.error(error);
-        }
-    };
-
+        }}
+        if (componentMounted) {
+            fetchDetails();
+          }
+    },[id, componentMounted])
+    
     return (
         <div className="popup listing-details-popup">
             <div className="popup-content">
@@ -49,6 +46,7 @@ export default function ListingDetailsPopup({ onClose, title, description, price
                         <div className='listing-title'>{address}</div>
                         <div className='listing-description'>asdasdasf</div>
                         <div className='listing-price'>Listing Price</div>
+                        <div className='username'>{username}</div>
                         <div className='latitude'>{latitude}</div>
                         <div className='longitude'>{longitude}</div>
                     </div>
