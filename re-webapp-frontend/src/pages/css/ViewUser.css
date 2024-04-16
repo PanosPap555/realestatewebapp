@@ -7,13 +7,27 @@
 
 .view-user-heading {
     text-align: center;
+    z-index: 2;
 }
 
 .view-user-username {
     font-weight: bold;
+    z-index: 2;
 }
 
 .view-user-button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.view-listing-button{
+    z-index: 2;
     display: block;
     margin: 0 auto;
     padding: 10px 20px;

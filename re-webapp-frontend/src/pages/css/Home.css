@@ -36,3 +36,17 @@
     cursor: pointer;
     color: #CB5794;
 }
+
+.auth-welcome {
+    color: lightgray;
+    z-index: 2;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.auth-highlight-username {
+    color: #9F2B68;
+    z-index: 2;
+    font-size: 2rem;
+    font-weight: bold;
+}
