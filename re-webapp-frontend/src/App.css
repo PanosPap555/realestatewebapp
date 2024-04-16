@@ -1,16 +1,14 @@
 .App {
   text-align: center;
   cursor: default;
-  
-  /* added */
   height: 100vh;
   background-image: url('../public/img/home_background.png');
   background-size: cover;
   background-position: center;
   position: relative;
+  z-index: 0;
 }
 
-/* added */
 .overlay {
   content: "";
   position: absolute;
@@ -25,7 +23,7 @@
       rgba(0, 0, 0, 0.9) 60%,
       rgba(0, 0, 0, 0.85) 80%, 
       rgba(0, 0, 0, 0.8));
-  z-index: 1;
+  z-index: -1;
 }
 
 .overlay-popup::before {
