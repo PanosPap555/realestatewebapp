@@ -1,7 +1,7 @@
 import React from 'react'
 import "./css/Popup.css"
 
-export default function PopupUser({ onClose, setAuthenticated }) {
+export default function PopupUser({ onClose, setAuthenticated, username }) {
 
   const logout = () => {
     localStorage.clear()
@@ -12,6 +12,7 @@ export default function PopupUser({ onClose, setAuthenticated }) {
   return (
     <div className="popup user-popup">
       <div className="popup-content">
+      <div className='login-text'>{username}</div>
         <hr />
         <div><button type="button" className="btn btn-dark login-btn">View Profile</button></div>
         <div><button type="button" className="btn btn-dark login-btn">Add Listing</button></div>
