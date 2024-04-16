@@ -36,7 +36,7 @@ export default function PopupRegister({ onClose, setAuthenticated, setUsername }
                 passwordRepeat: getPasswordRepeat()
             })
 
-            if(response.data.errorCode == null) {
+            if (response.data.errorCode == null) {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('username', getUsername())
                 axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
@@ -79,12 +79,12 @@ export default function PopupRegister({ onClose, setAuthenticated, setUsername }
                     <div>
                         <label className="message-label"></label>
                     </div>
-                    <div className="btns">
+                    <div className='btns'>
                         <button type="submit" className="btn btn-dark register-btn">Sign Up</button>
                         <button type="button" className="btn btn-dark close-btn" onClick={onClose}>Close</button>
                     </div>
                 </form>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }

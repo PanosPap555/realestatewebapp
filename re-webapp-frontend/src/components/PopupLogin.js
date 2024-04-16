@@ -73,7 +73,7 @@ export default function PopupLogin({ onClose, setAuthenticated, setUsername }) {
                     <div>
                         <label className="message-label"></label>
                     </div>
-                    <div className="btns">
+                    <div className='btns'>
                         <button type="submit" className="btn btn-dark login-btn">Log In</button>
                         <button type="button" className="btn btn-dark close-btn" onClick={onClose}>Close</button>
                     </div>
