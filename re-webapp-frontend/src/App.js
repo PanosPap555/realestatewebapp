@@ -12,7 +12,7 @@ import PopupRegister from './components/PopupRegister'
 import PopupLogin from './components/PopupLogin'
 import PopupUser from './components/PopupUser'
 
-//import ViewUser from './pages/ViewUser'
+import ViewUser from './pages/ViewUser'
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);

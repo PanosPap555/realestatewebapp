@@ -1,0 +1,25 @@
+.view-user-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.view-user-heading {
+    text-align: center;
+}
+
+.view-user-username {
+    font-weight: bold;
+}
+
+.view-user-button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
