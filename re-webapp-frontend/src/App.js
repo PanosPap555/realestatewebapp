@@ -13,13 +13,14 @@ import PopupLogin from './components/PopupLogin'
 import PopupUser from './components/PopupUser'
 
 import ViewUser from './pages/ViewUser'
+//import ViewUserListing from './pages/ViewUserListing'
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
 
-  /* Username, Email */
+  /* Username */
   const [username, setUsername] = useState('Username');
-  //const [email, setEmail] = useState('Email');
 
   /* popups */
   const [popupLogin, setPopupLogin] = useState(false);
@@ -51,7 +52,6 @@ function App() {
         /** apply jwtoken to all http requests (resets after reload) */
         axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
         setUsername(localStorage.getItem('username'))
-        //setEmail(localStorage.getItem('email'))
         setAuthenticated(true)
       }
     }
@@ -67,14 +67,14 @@ function App() {
 
   return (
     <>
-      {popupLogin && (<PopupLogin onClose={closePopupLogin} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
-      {popupRegister && (<PopupRegister onClose={closePopupRegister} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
-      {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} username={username} />)}
-      {popupLogin || popupRegister || popupUser ? (<div className="overlay-popup" />) : null}
       <div className="App">
         <div className="overlay" />
         <Navbar authenticated={authenticated} username={username} setPopupUser={setPopupUser} />
         <Router>
+          {popupLogin && (<PopupLogin onClose={closePopupLogin} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
+          {popupRegister && (<PopupRegister onClose={closePopupRegister} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
+          {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} username={username} />)}
+          {popupLogin || popupRegister || popupUser ? (<div className="overlay-popup" />) : null}
           <Routes>
             <Route
               path="/"
@@ -84,8 +84,7 @@ function App() {
           <Routes>
             <Route
               path="/ViewUser"
-              //Add email here when you should
-              element={<ViewUser authenticated={authenticated} username={username}/>}
+              element={<ViewUser authenticated={authenticated} username={username} />}
             />
           </Routes>
         </Router>

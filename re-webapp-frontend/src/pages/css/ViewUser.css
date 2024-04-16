@@ -1,32 +1,40 @@
+.view-user-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the wrapper fills the entire viewport height */
+}
+
 .view-user-container {
     padding: 20px;
     border: 1px solid #ddd;
     max-width: 500px;
-    margin: 0 auto;
     z-index: 4;
     color: white;
+    text-align: center; /* Center align the content */
 }
 
 .view-user-heading {
-    text-align: center;
-    z-index: 2;
     color: white;
 }
 
 .view-user-email, .view-user-username {
     font-weight: bold;
-    z-index: 2;
     color: white;
 }
 
-.view-listing-button{
-    z-index: 2;
-    display: block;
-    margin: 0 auto;
+.view-listing-button {
+    display: inline-block; /* Display as inline-block to not stretch */
     padding: 10px 20px;
     background-color: #9F2B68;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none; /* Remove default link underline */
+    margin-top: 20px; /* Add some top margin for spacing */
+}
+
+.view-listing-button:hover {
+    background-color: #7e1e4b; /* Darker color on hover */
 }
