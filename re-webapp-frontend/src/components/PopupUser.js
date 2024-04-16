@@ -6,7 +6,8 @@ export default function PopupUser({ onClose, setAuthenticated, username }) {
   const logout = () => {
     localStorage.clear()
     setAuthenticated(false)
-    onClose()
+    onClose();
+    window.location.href = "/";
   }
 
   return (
