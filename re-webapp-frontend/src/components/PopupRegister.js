@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import "./Popup.css"
+import "./css/Popup.css"
 
 export default function PopupRegister({ onClose, setAuthenticated, setUsername }) {
 

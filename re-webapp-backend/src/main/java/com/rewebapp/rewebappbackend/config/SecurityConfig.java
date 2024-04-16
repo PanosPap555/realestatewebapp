@@ -1,7 +1,7 @@
 package com.rewebapp.rewebappbackend.config;
 
+import com.rewebapp.rewebappbackend.entity.Role;
 import com.rewebapp.rewebappbackend.filter.JWTAuthenticationFilter;
-import com.rewebapp.rewebappbackend.model.Role;
 import com.rewebapp.rewebappbackend.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/admin").hasRole(Role.ADMIN.name())
-                        .requestMatchers("/login", "/register", "/home").permitAll()
+                        .requestMatchers("/login", "/register", "/home", "/results", "/details", "/add-listing").permitAll()
                         .anyRequest().authenticated()
                 )
                 .userDetailsService(userDetailsService)

@@ -1,9 +1,9 @@
 package com.rewebapp.rewebappbackend.service;
 
-import com.rewebapp.rewebappbackend.model.AuthenticationResponse;
-import com.rewebapp.rewebappbackend.model.Role;
-import com.rewebapp.rewebappbackend.model.TokenRequest;
-import com.rewebapp.rewebappbackend.model.User;
+import com.rewebapp.rewebappbackend.data.AuthenticationResponse;
+import com.rewebapp.rewebappbackend.data.TokenRequest;
+import com.rewebapp.rewebappbackend.entity.Role;
+import com.rewebapp.rewebappbackend.entity.User;
 import com.rewebapp.rewebappbackend.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

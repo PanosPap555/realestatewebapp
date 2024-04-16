@@ -1,6 +1,6 @@
 package com.rewebapp.rewebappbackend.repository;
 
-import com.rewebapp.rewebappbackend.model.User;
+import com.rewebapp.rewebappbackend.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

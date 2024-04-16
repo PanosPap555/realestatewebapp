@@ -1,6 +1,6 @@
 package com.rewebapp.rewebappbackend.service;
 
-import com.rewebapp.rewebappbackend.model.User;
+import com.rewebapp.rewebappbackend.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

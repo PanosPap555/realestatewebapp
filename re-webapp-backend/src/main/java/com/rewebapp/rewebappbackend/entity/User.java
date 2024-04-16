@@ -1,4 +1,4 @@
-package com.rewebapp.rewebappbackend.model;
+package com.rewebapp.rewebappbackend.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

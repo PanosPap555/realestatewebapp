@@ -1,14 +1,19 @@
 import React from 'react';
-import "./Navbar.css"
+import "./css/Navbar.css"
 
-export default function Navbar({ authenticated, username }) {
+export default function Navbar({ authenticated, username, setPopupUser }) {
+
+    const openPopupUser = () => {
+        setPopupUser(true);
+    };
+
     return (
         <nav className={`navbar ${authenticated ? 'navbar-auth' : ''}`}>
             <a href="/" className='company-name'>Real Estate Web App</a>
             {authenticated ? (
                 <div className='profile'>
-                    <a href="/" className='username'>{username}</a>
-                    <a href="/"><img className='profile-pic' src="/img/default_user_image.png" alt="Profile" /></a>
+                    <span onClick={openPopupUser} className='username'>{username}</span>
+                    <span onClick={openPopupUser} ><img className='profile-pic' src="/img/default_user_image.png" alt="Profile" /></span>
                 </div>
             ) : (
                 <></>

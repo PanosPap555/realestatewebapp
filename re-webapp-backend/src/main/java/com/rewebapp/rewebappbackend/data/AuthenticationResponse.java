@@ -1,4 +1,4 @@
-package com.rewebapp.rewebappbackend.model;
+package com.rewebapp.rewebappbackend.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

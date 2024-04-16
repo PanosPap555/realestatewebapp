@@ -1,4 +1,4 @@
-package com.rewebapp.rewebappbackend.model;
+package com.rewebapp.rewebappbackend.entity;
 
 public enum Role {
     USER,
