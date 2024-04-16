@@ -68,7 +68,6 @@ function App() {
       {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} username={username} />)}
       {popupLogin || popupRegister || popupUser ? (<div className="overlay-popup" />) : null}
       <div className="App">
-        {/*<div className="overlay" />*/}
         <div className="overlay" />
         <Navbar authenticated={authenticated} username={username} setPopupUser={setPopupUser} />
         <Router>
