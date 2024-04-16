@@ -1,6 +1,5 @@
 package com.rewebapp.rewebappbackend.repository;
 
-import com.rewebapp.rewebappbackend.data.DetailsResponse;
 import com.rewebapp.rewebappbackend.entity.Listing;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
