@@ -84,6 +84,7 @@ function App() {
               element={<ViewUser />}
             />
           </Routes>
+          <Route path="/listing" element={<ViewListing />} />
         </Router>
       </div>
     </>

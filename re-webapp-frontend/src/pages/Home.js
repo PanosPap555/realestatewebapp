@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./css//Home.css"
 import ListingDetailsPopup from '../components/ListingDetailsPopup';
+import Search from '../components/Search';
 
 export default function Home({ authenticated, setPopupLogin, setPopupRegister, username }) {
     const [showListingDetails, setShowListingDetails] = useState(false);
@@ -32,6 +33,9 @@ export default function Home({ authenticated, setPopupLogin, setPopupRegister, u
                     <div>Welcome aboard <span className={'auth-highlight-username'}>{username}</span>!</div>
                 </div>
                 <div><button type="button" className="btn btn-dark " onClick={openListingDetails}>View Details</button></div>
+                <div className="d-flex justify-content-end"> {/* Add this div */}
+                  <Search />
+                </div>
                 {showListingDetails && <ListingDetailsPopup onClose={closeListingDetails} />}
                 </>
             ) : (
