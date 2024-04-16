@@ -11,7 +11,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -24,16 +27,23 @@ public class ListingService
         /* page_idx = 0, page_len = 5, sort by price */
         Pageable pageable = PageRequest.of(pageNumber, 5, Sort.by("price").ascending());
         try{
-            List<ListingResponse> response = new ArrayList<>();
+
             /* fetch data */
             Page<Object[]> data = listingRepo.findByQuery(query, pageable);
+            List<ListingResponse> response = new ArrayList<>();
+
             /* map data */
             for(Object[] obj : data){
-                response.add(new ListingResponse(
-                        (Long)   obj[0],
-                        (String) obj[1],
-                        (String) obj[2],
-                        (Float)  obj[3]));
+                Long id = (Long) obj[0];
+                String title = (String) obj[1];
+                String description = (String) obj[2];
+                Float price = (Float) obj[3];
+                byte[] imageData = (byte[]) obj[4];
+
+                String imageDataBase64 = imageData != null? Base64.getEncoder().encodeToString(imageData) : null;
+
+                ListingResponse listingResponse = new ListingResponse(id, title, description, price, imageDataBase64);
+                response.add(listingResponse);
             }
             return response;
         }

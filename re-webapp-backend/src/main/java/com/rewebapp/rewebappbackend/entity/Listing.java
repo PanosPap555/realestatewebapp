@@ -24,4 +24,8 @@ public class Listing {
     private Double latitude;
 
     private Double longitude;
+
+    @Lob
+    @Column(columnDefinition="BLOB")
+    private byte[] imageData;
 }
