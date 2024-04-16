@@ -12,19 +12,6 @@
     box-shadow: 0 0 5px #9F2B68;
 }
 
-/*
-.popup::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: -1;
-}
-*/
-
 .register-popup {
     border-radius: 3%;
 }
