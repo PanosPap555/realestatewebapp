@@ -5,10 +5,7 @@ import com.rewebapp.rewebappbackend.repository.UserRepo;
 import com.rewebapp.rewebappbackend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -19,8 +16,8 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/email")
-    public ResponseEntity<EmailResponse> getUserEmail(@RequestBody Map<String, String> request){
-        return ResponseEntity.ok(userService.getEmail(request.get("username")));
+    @GetMapping("/email/{username}")
+    public ResponseEntity<EmailResponse> getUserEmail(@PathVariable String username){
+        return ResponseEntity.ok(userService.getEmail(username));
     }
 }
