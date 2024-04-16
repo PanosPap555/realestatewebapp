@@ -16,7 +16,7 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:3000/")
 public class ListingController {
 
-    public final ListingService listingService;
+    private final ListingService listingService;
 
     @GetMapping("/results")
     public ResponseEntity<List<ListingResponse>> results(@RequestBody Map<String, String> request){
