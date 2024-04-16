@@ -34,7 +34,6 @@
 
 .mb-3:last-of-type {
     padding-bottom: 0.4rem;
-    ;
 }
 
 .form-control:focus {
@@ -77,4 +76,22 @@
 
 .message-label {
     margin-bottom: 1rem;
+}
+
+.user-popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.user-popup-content > div > .close-btn{
+    margin-left: 0;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
 }

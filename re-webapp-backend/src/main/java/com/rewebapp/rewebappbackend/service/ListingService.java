@@ -56,7 +56,7 @@ public class ListingService
         }
         catch(Exception e){
             System.out.println(e.toString());
-            return null;
+            return new DetailsResponse(null, null, null, null, null);
         }
     }
 

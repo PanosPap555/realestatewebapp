@@ -13,6 +13,8 @@ import PopupLogin from './components/PopupLogin'
 import PopupUser from './components/PopupUser'
 import Details from './components/Details.js';
 
+import ViewUser from './pages/ViewUser'
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [username, setUsername] = useState('Username');
