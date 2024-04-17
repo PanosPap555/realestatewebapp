@@ -10,4 +10,5 @@ public class ListingResponse {
     private String title;
     private String description;
     private Float price;
+    String imageData;
 }

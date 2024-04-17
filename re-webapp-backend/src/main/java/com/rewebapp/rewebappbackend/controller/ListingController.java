@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,9 +17,9 @@ public class ListingController {
 
     private final ListingService listingService;
 
-    @GetMapping("/results/{query}")
-    public ResponseEntity<List<ListingResponse>> results(@PathVariable String query){
-        return ResponseEntity.ok(listingService.getListings(query));
+    @GetMapping("/results/{query}/{pageNumber}")
+    public ResponseEntity<List<ListingResponse>> results(@PathVariable String query, @PathVariable Integer pageNumber){
+        return ResponseEntity.ok(listingService.getListings(query, pageNumber));
     }
 
     @GetMapping("/details/{id}")

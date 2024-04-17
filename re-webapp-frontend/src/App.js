@@ -14,12 +14,16 @@ import PopupUser from './components/PopupUser'
 
 import ViewUser from './pages/ViewUser'
 import ViewListing from './pages/ViewListings.js'
+import ViewUserListing from './pages/ViewUserListing'
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
+
+  /* Username */
   const [username, setUsername] = useState('Username');
 
-  /** popups */
+  /* popups */
   const [popupLogin, setPopupLogin] = useState(false);
   const [popupRegister, setPopupRegister] = useState(false);
   const [popupUser, setPopupUser] = useState(false);
@@ -64,15 +68,14 @@ function App() {
 
   return (
     <>
-      {popupLogin && (<PopupLogin onClose={closePopupLogin} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
-      {popupRegister && (<PopupRegister onClose={closePopupRegister} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
-      {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} username={username} />)}
-      {popupLogin || popupRegister || popupUser ? (<div className="overlay-popup" />) : null}
       <div className="App">
-        {/*<div className="overlay" />*/}
-
+        <div className="overlay" />
         <Navbar authenticated={authenticated} username={username} setPopupUser={setPopupUser} />
         <Router>
+          {popupLogin && (<PopupLogin onClose={closePopupLogin} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
+          {popupRegister && (<PopupRegister onClose={closePopupRegister} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
+          {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} username={username} />)}
+          {popupLogin || popupRegister || popupUser ? (<div className="overlay-popup" />) : null}
           <Routes>
             <Route
               path="/"
@@ -82,7 +85,13 @@ function App() {
           <Routes>
             <Route
               path="/ViewUser"
-              element={<ViewUser />}
+              element={<ViewUser authenticated={authenticated} username={username} />}
+            />
+          </Routes>
+          <Routes>
+            <Route
+              path="/ViewUserListing"
+              element={<ViewUserListing authenticated={authenticated} username={username} />}
             />
           </Routes>
           <Routes>
