@@ -1,7 +1,4 @@
 import React, {useState} from 'react';
-import { Link } from "react-router-dom";
-import ListingDetailsPopup from '../components/ListingDetailsPopup';
-
 
 function ViewUserListing() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);

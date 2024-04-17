@@ -29,14 +29,14 @@ export default function Home({ authenticated, setPopupLogin, setPopupRegister, u
             </div>
             {authenticated ? (
                 <>
-                <div className='auth-welcome'>
-                    <div>Welcome aboard <span className={'auth-highlight-username'}>{username}</span>!</div>
-                </div>
-                <div><button type="button" className="btn btn-dark " onClick={openListingDetails}>View Details</button></div>
-                <div className="d-flex justify-content-end"> {/* Add this div */}
-                  search
-                </div>
-                {showListingDetails && <ListingDetailsPopup onClose={closeListingDetails} />}
+                    <div className='auth-welcome'>
+                        <div>Welcome aboard <span className={'auth-highlight-username'}>{username}</span>!</div>
+                    </div>
+                    <div><button type="button" className="btn btn-dark " onClick={openListingDetails}>View Details</button></div>
+                    <div className="d-flex justify-content-end"> {/* Add this div */}
+                        search
+                    </div>
+                    {showListingDetails && <ListingDetailsPopup onClose={closeListingDetails} />}
                 </>
             ) : (
                 <div className='not-auth-text'>

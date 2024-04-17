@@ -17,7 +17,7 @@ const Listings = ({ listings }) => {
             <p>{listings.price}</p>
             <div>
                 asdasfadsfgf
-                <img src={`data:image/jpeg;base64,/9j/${listings.imageData}`} alt="Base64 Image" />
+                <img src={`data:image/jpeg;base64,/9j/${listings.imageData}`} alt="Real Estate" />
             </div>
 
         </div>
