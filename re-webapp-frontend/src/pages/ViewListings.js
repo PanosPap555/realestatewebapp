@@ -4,7 +4,7 @@ import Listings from './Listings';
 
 export default function ViewListings() {
     const [listings, setListings] = useState([]);
-    const [query, setQuery] = useState('Home');
+    const [query, setQuery] = useState('view');
     const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
