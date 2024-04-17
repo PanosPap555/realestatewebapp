@@ -15,6 +15,7 @@ import PopupUser from './components/PopupUser'
 import ViewUser from './pages/ViewUser'
 import ViewListing from './pages/ViewListings.js'
 import ViewUserListing from './pages/ViewUserListing'
+import AddListing from './pages/AddListing'
 
 
 function App() {
@@ -96,6 +97,12 @@ function App() {
           </Routes>
           <Routes>
             <Route path="/listing" element={<ViewListing />} />
+          </Routes>
+          <Routes>
+            <Route
+              path="/AddListing" 
+              element={<AddListing authenticated={authenticated}/>}
+            />
           </Routes>
         </Router>
       </div>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from "react-router-dom";
-import ListingDetailPopup from './ListingDetailPopup';
+import ListingDetailsPopup from '../components/ListingDetailsPopup';
 
 
 function ViewUserListing() {
@@ -12,7 +12,7 @@ function ViewUserListing() {
 
   return (
     <div className="button-wrapper">
-      {isPopupOpen && <ListingDetailPopup onClose={togglePopup} />}
+      {/*{isPopupOpen && <ListingDetailsPopup onClose={togglePopup} />}*/}
       <button onClick={togglePopup}>Button 1</button>
       <button>Button 2</button>
       <button>Button 3</button>

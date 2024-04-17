@@ -8,8 +8,12 @@ export default function PopupUser({ onClose, setAuthenticated, username }) {
   const navigate = useNavigate();
 
   const handleViewProfile = () => {
-    // Navigate to the desired route
     navigate('/ViewUser');
+    onClose();
+  };
+
+  const handleAddListing = () => {
+    navigate('/AddListing');
     onClose();
   };
 
@@ -26,11 +30,15 @@ export default function PopupUser({ onClose, setAuthenticated, username }) {
       <hr />
       <div className="popup-content user-popup-content">
         <div>
-            <button type="button" className="btn btn-dark login-btn" onClick={handleViewProfile}>
-              View Profile
-            </button>
+          <button type="button" className="btn btn-dark login-btn" onClick={handleViewProfile}>
+            View Profile
+          </button>
         </div>
-        <div><button type="button" className="btn btn-dark login-btn">Add Listing</button></div>
+        <div>
+          <button type="button" className="btn btn-dark login-btn" onCLick={handleAddListing}>
+            Add Listing
+          </button>
+        </div>
         <div><button type="button" className="btn btn-dark login-btn" onClick={logout}>Log Out</button></div>
         <div><button type="button" className="btn btn-dark close-btn" onClick={onClose}>Close</button></div>
       </div>
