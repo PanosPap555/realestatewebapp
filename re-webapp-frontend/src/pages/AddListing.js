@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import "./css/AddListing.css"
 
-function AddListing({ onClose }) {
+function AddListing({authenticated, username }) {
 
     const setMessage = (message) => {
         document.querySelector(".message-label").textContent = message
@@ -11,10 +11,6 @@ function AddListing({ onClose }) {
     const getMessage = () => {
         return document.getElementById("message-label").value
     }
-
-    /*const getId = () => {
-        return document.getElementById("id").value
-    };*/
 
     const getTitle = () => {
         return document.getElementById("title").value
@@ -54,7 +50,7 @@ function AddListing({ onClose }) {
         try {
             /* make request */
             const response = await axios.post("http://localhost:8080/add-listing", {
-                //id: getId(),
+                username: localStorage.getItem("username"),
                 title: getTitle(),
                 description: getDescription(),
                 address: getAddress(),
@@ -63,8 +59,16 @@ function AddListing({ onClose }) {
                 longitude: parseFloat(getLongitude()),
                 imageData: getImageData()
             })
-
+            console.log(response.data.errorCode);
             if (!response.data.errorCode) {
+                document.getElementById("title").value = "";
+                document.getElementById("description").value = "";
+                document.getElementById("address").value = "";
+                document.getElementById("price").value = "";
+                document.getElementById("latitude").value = "";
+                document.getElementById("longitude").value = "";
+                document.getElementById("image_data").value = "";
+                handleClose();
                 return
             }
 
@@ -75,6 +79,10 @@ function AddListing({ onClose }) {
             console.log(ex);
             setMessage("Unable to Add Listing. Try again in another millenia.")
         }
+    }
+
+    const uploadImage = (e) => {
+        console.log(e.target.files);
     }
 
 
@@ -111,10 +119,23 @@ function AddListing({ onClose }) {
                     <label htmlFor="image_data" className="form-label">ImageData</label> {/* REMOVE THIS */}
                     <input placeholder="ImageData" type="text" className="form-control" id="image_data" required />
                 </div>
+                
+                {/*<div className="image-input">
+                    <label htmlFor="image_data" className="form-label">ImageData</label> 
+                    <div>
+                        <input
+                         type="file"
+                         onChange={(e) => {
+                            uploadImage(e);
+                         }}
+                         />
+                    </div>
+                </div>
+                        */}
                 <div>
                     <label className="message-label" id="message-label"></label>
                 </div>
-                <button type="submit" className="btn btn-dark register-btn" onClick={handleClose}>Add Listing</button>
+                <button type="submit" className="btn btn-dark register-btn">Add Listing</button>
                 <button type="button" className="btn btn-dark close-btn" onClick={handleClose}>Cancel</button>
             </form>
         </div>
