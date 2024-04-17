@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import "./css/AddListing.css"
 
-function AddListing( onClose, setAuthenticated, setId, setTitle, setDescription, setAddress, setPrice, setLatitude, setLongitude, setImageData) {
+function AddListing({ onClose }) {
 
     const setMessage = (message) => {
         document.querySelector(".message-label").textContent = message
@@ -12,9 +12,9 @@ function AddListing( onClose, setAuthenticated, setId, setTitle, setDescription,
         return document.getElementById("message-label").value
     }
 
-    const getId = () => {
+    /*const getId = () => {
         return document.getElementById("id").value
-    };
+    };*/
 
     const getTitle = () => {
         return document.getElementById("title").value
@@ -44,31 +44,27 @@ function AddListing( onClose, setAuthenticated, setId, setTitle, setDescription,
         return document.getElementById("image_data").value
     };
 
+    const handleClose = () => {
+        // Redirect to the main page
+        window.location.href = "/";
+    };
+
     const handleListingAddition = async (e) => {
         e.preventDefault()
         try {
             /* make request */
             const response = await axios.post("http://localhost:8080/add-listing", {
-                id: getId(),
+                //id: getId(),
                 title: getTitle(),
                 description: getDescription(),
                 address: getAddress(),
-                price: getPrice(),
-                latitude: getLatitude(),
-                longtitude: getLongitude(),
+                price: parseFloat(getPrice()),
+                latitude: parseFloat(getLatitude()),
+                longitude: parseFloat(getLongitude()),
                 imageData: getImageData()
             })
 
             if (!response.data.errorCode) {
-                setId(getId())
-                setTitle(getTitle())
-                setDescription(getDescription())
-                setAddress(getAddress())
-                setPrice(getPrice())
-                setLatitude(getLatitude())
-                setLongitude(getLongitude())
-                setImageData(getImageData())
-                onClose()
                 return
             }
 
@@ -76,6 +72,7 @@ function AddListing( onClose, setAuthenticated, setId, setTitle, setDescription,
             setMessage(response.data.errorCode)
         }
         catch (ex) {
+            console.log(ex);
             setMessage("Unable to Add Listing. Try again in another millenia.")
         }
     }
@@ -83,7 +80,43 @@ function AddListing( onClose, setAuthenticated, setId, setTitle, setDescription,
 
     return (
         <div className='add-listing-wrapper'>
-            Hello World!
+            <div className='login-text'>Sign Up!</div>
+            <hr></hr>
+            <form onSubmit={(e) => handleListingAddition(e)}>
+                <div className="text-input">
+                    <label htmlFor="title" className="form-label">Title</label> {/* Title */}
+                    <input placeholder="Title" type="text" className="form-control" id="title" required />
+                </div>
+                <div className="text-input">
+                    <label htmlFor="description" className="form-label">Description</label> {/* Description */}
+                    <input placeholder="Description" type="text" className="form-control" id="description" required />
+                </div>
+                <div className="text-input">
+                    <label htmlFor="address" className="form-label">Address</label> {/* Address */}
+                    <input placeholder="Address" type="text" className="form-control" id="address" required />
+                </div>
+                <div className="text-input">
+                    <label htmlFor="price" className="form-label">Price</label> {/* Price */}
+                    <input placeholder="Price" type="text" className="form-control" id="price" required />
+                </div>
+                <div className="text-input">
+                    <label htmlFor="latitude" className="form-label">Latitude</label> {/* Latitude */}
+                    <input placeholder="Latitude" type="text" className="form-control" id="latitude" required />
+                </div>
+                <div className="text-input">
+                    <label htmlFor="longitude" className="form-label">Longitude</label> {/* Longitude */}
+                    <input placeholder="Longitude" type="text" className="form-control" id="longitude" required />
+                </div>
+                <div className="text-input">
+                    <label htmlFor="image_data" className="form-label">ImageData</label> {/* REMOVE THIS */}
+                    <input placeholder="ImageData" type="text" className="form-control" id="image_data" required />
+                </div>
+                <div>
+                    <label className="message-label" id="message-label"></label>
+                </div>
+                <button type="submit" className="btn btn-dark register-btn" onClick={handleClose}>Add Listing</button>
+                <button type="button" className="btn btn-dark close-btn" onClick={handleClose}>Cancel</button>
+            </form>
         </div>
     );
 }
