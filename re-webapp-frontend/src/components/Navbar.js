@@ -12,7 +12,6 @@ export default function Navbar({ authenticated, username, setPopupUser }) {
             <a href="/" className='company-name'>Real Estate Web App</a>
             {authenticated ? (
                 <div className='profile'>
-                    <span onClick={openPopupUser} className='username'>{username}</span>
                     <span onClick={openPopupUser} ><img className='profile-pic' src="/img/default_user_image.png" alt="Profile" /></span>
                 </div>
             ) : (
