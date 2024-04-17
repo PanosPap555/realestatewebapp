@@ -1,6 +1,5 @@
 package com.rewebapp.rewebappbackend.config;
 
-import com.rewebapp.rewebappbackend.entity.Role;
 import com.rewebapp.rewebappbackend.filter.JWTAuthenticationFilter;
 import com.rewebapp.rewebappbackend.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
