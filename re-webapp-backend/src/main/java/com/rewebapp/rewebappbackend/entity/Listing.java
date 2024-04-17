@@ -1,10 +1,12 @@
 package com.rewebapp.rewebappbackend.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Entity
+@Builder
 public class Listing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment

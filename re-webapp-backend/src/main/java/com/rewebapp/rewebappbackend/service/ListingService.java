@@ -1,9 +1,12 @@
 package com.rewebapp.rewebappbackend.service;
 
 import com.rewebapp.rewebappbackend.data.DetailsResponse;
+import com.rewebapp.rewebappbackend.data.ListingRequest;
 import com.rewebapp.rewebappbackend.data.ListingResponse;
 import com.rewebapp.rewebappbackend.entity.Listing;
+import com.rewebapp.rewebappbackend.entity.User;
 import com.rewebapp.rewebappbackend.repository.ListingRepo;
+import com.rewebapp.rewebappbackend.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +23,7 @@ import java.util.List;
 public class ListingService
 {
     private final ListingRepo listingRepo;
+    private final UserRepo userRepo;
 
     public List<ListingResponse> getListings(String query, Integer pageNumber) {
         /* page_idx = 0, page_len = 5, sort by price */
@@ -98,8 +102,20 @@ public class ListingService
         }
     }
 
-    public void addListing(Listing listing){
+    public void addListing(ListingRequest request){
         try{
+            User user = userRepo.findByUsername(request.getUsername()).orElseThrow();
+            Listing listing = Listing.builder()
+                    .user(user)
+                    .title(request.getTitle())
+                    .description(request.getDescription())
+                    .address(request.getAddress())
+                    .price(request.getPrice())
+                    .latitude(request.getLatitude())
+                    .longitude(request.getLongitude())
+                    .imageData(request.getImageData())
+                    .build();
+
             listingRepo.save(listing);
         }
         catch(Exception e){

@@ -1,8 +1,8 @@
 package com.rewebapp.rewebappbackend.controller;
 
 import com.rewebapp.rewebappbackend.data.DetailsResponse;
+import com.rewebapp.rewebappbackend.data.ListingRequest;
 import com.rewebapp.rewebappbackend.data.ListingResponse;
-import com.rewebapp.rewebappbackend.entity.Listing;
 import com.rewebapp.rewebappbackend.service.ListingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +33,8 @@ public class ListingController {
     }
 
     @PostMapping("/add-listing")
-    public ResponseEntity<Void> addListing(@RequestBody Listing listing){
-        listingService.addListing(listing);
+    public ResponseEntity<Void> addListing(@RequestBody ListingRequest request){
+        listingService.addListing(request);
         return ResponseEntity.ok().build();
     }
 }
