@@ -51,6 +51,36 @@ public class ListingService
         }
     }
 
+    public List<ListingResponse> userListings(String username, Integer pageNumber) {
+        /* page_idx = 0, page_len = 5, sort by price */
+        Pageable pageable = PageRequest.of(pageNumber, 5, Sort.by("price").ascending());
+        try{
+
+            /* fetch data */
+            Page<Object[]> data = listingRepo.findByUsername(username, pageable);
+            List<ListingResponse> response = new ArrayList<>();
+
+            /* map data */
+            for(Object[] obj : data){
+                Long id = (Long) obj[0];
+                String title = (String) obj[1];
+                String description = (String) obj[2];
+                Float price = (Float) obj[3];
+                byte[] imageData = (byte[]) obj[4];
+
+                String imageDataBase64 = imageData != null? Base64.getEncoder().encodeToString(imageData) : null;
+
+                ListingResponse listingResponse = new ListingResponse(id, title, description, price, imageDataBase64);
+                response.add(listingResponse);
+            }
+            return response;
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+            return new ArrayList<>();
+        }
+    }
+
     /* get details from id */
     public DetailsResponse getDetails(Long id){
         try{

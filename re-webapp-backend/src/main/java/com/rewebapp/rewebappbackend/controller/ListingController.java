@@ -22,6 +22,11 @@ public class ListingController {
         return ResponseEntity.ok(listingService.getListings(query, Integer.parseInt(pageNumber)));
     }
 
+    @GetMapping("/user-listings/{username}/{pageNumber}")
+    public ResponseEntity<List<ListingResponse>> userListings(@PathVariable String username, @PathVariable String pageNumber){
+        return ResponseEntity.ok(listingService.userListings(username, Integer.parseInt(pageNumber)));
+    }
+
     @GetMapping("/details/{id}")
     public ResponseEntity<DetailsResponse> details(@PathVariable String id){
         return ResponseEntity.ok(listingService.getDetails(Long.parseLong(id)));

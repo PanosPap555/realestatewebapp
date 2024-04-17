@@ -1,6 +1,5 @@
 package com.rewebapp.rewebappbackend.config;
 
-import com.rewebapp.rewebappbackend.entity.Role;
 import com.rewebapp.rewebappbackend.filter.JWTAuthenticationFilter;
 import com.rewebapp.rewebappbackend.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +29,9 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/admin").hasRole(Role.ADMIN.name())
-                        .requestMatchers("/login", "/register", "/home", "/results/**", "/details/*", "/add-listing", "/email/*").permitAll()
+                        .requestMatchers("/admin").hasAuthority("ADMIN")
+                        .requestMatchers("/email/**", "/results/**", "/details/**", "/add-listing", "/user-listings/**").hasAuthority("USER")
+                        .requestMatchers("/login", "/register", "/home").permitAll()
                         .anyRequest().authenticated()
                 )
                 .userDetailsService(userDetailsService)

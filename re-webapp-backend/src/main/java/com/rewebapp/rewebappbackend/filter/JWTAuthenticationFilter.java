@@ -17,10 +17,11 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-@Component
-@RequiredArgsConstructor
 // used to filter incoming http requests for JWTokens and automatically authenticate users based on them
 // automatically called each time an HTTP request is received
+
+@Component
+@RequiredArgsConstructor
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
     private final JWTService jwtService;

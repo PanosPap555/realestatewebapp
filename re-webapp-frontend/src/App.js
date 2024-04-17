@@ -13,6 +13,7 @@ import ViewUser from './pages/ViewUser'
 import ViewListing from './pages/ViewListings.js'
 import ViewUserListing from './pages/ViewUserListing'
 import Listings from './pages/Listings.js';
+import AddListing from './pages/AddListing'
 
 
 function App() {
@@ -97,6 +98,12 @@ function App() {
           </Routes>
           <Routes>
             <Route path="/Listings" element={<Listings />} />
+          </Routes>
+          <Routes>
+            <Route
+              path="/AddListing" 
+              element={<AddListing authenticated={authenticated} username={username} />}
+            />
           </Routes>
         </Router>
       </div>
