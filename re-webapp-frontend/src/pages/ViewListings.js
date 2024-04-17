@@ -1,45 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import "./css/ViewListing.css"
+import Listings from './Listings';
 
-export default function ViewListing({ query, pageNumber }) {
+export default function ViewListings() {
     const [listings, setListings] = useState([]);
-    const [componentMounted, setComponentMounted] = useState(false);
+    const [query, setQuery] = useState('Home');
+    const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
-        setComponentMounted(true);
-        const fetchListings = async() => {
-        console.log("useEffect executed");
-        try {
-            const response = await axios.get(`http://localhost:8080/results/${query}/${pageNumber}`);
-            console.log(response.data)
-            if (response.data.errorCode === null) {
+        const fetchData = async () => {
+            console.log("useEffect executed");
+            try {
+                const response = await axios.get(`http://localhost:8080/results/${query}/${pageNumber}`);
+                console.log(response.data);
+
+                // Update listings state with the fetched data
                 setListings(response.data);
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            console.error(error);
-          }
-        }
-        if (componentMounted) {
-            fetchListings();
-          }
-    },[query, pageNumber, componentMounted])
+        };
+
+        fetchData();
+    }, [query, pageNumber]);
+
+    const handleQueryChange = (event) => {
+        setQuery(event.target.value);
+    };
+
+    const handlePageNumberChange = (event) => {
+        setPageNumber(event.target.value);
+    };
 
     return (
-        <div className="listing-page">
-            {listings.map((listing) => (
-                <div className="listing" key={listing.id}>
-                    <div className='listing-image'>
-                        <img src={`./Server/Pics/1.jpg`} alt={listing.title} />
-                    </div>
-                    <div className='listing-info'>
-                        <div className='listing-title'>{listing.title}</div>
-                        <div className='listing-description'>{listing.description.slice(0, 100)}...</div>
-                        <div className='listing-price'>${listing.price}</div>
-                    </div>
+        <div>
+            <input type="text" value={query} onChange={handleQueryChange} placeholder="Search..." />
+            <input type="number" value={pageNumber} onChange={handlePageNumberChange} placeholder="Page number..." />
+            {listings && (
+                <div>
+                    {listings.map((listing, index) => ( // Added index as the second argument
+                        <Listings key={index} listings={listing} /> // Used index as the key
+                    ))}
                 </div>
-            ))}
+            )}
         </div>
     );
-
 }
+
+/*<div>
+      {listings.map((item) => (
+        <Listing key={item} item={`Listing ${item}`} />
+      ))}
+    </div>*/

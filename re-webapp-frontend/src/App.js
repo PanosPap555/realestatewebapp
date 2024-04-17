@@ -1,20 +1,18 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
 import './App.css'
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import PopupRegister from './components/PopupRegister'
 import PopupLogin from './components/PopupLogin'
 import PopupUser from './components/PopupUser'
-
 import ViewUser from './pages/ViewUser'
 import ViewListing from './pages/ViewListings.js'
 import ViewUserListing from './pages/ViewUserListing'
+import Listings from './pages/Listings.js';
 
 
 function App() {
@@ -95,7 +93,10 @@ function App() {
             />
           </Routes>
           <Routes>
-            <Route path="/listing" element={<ViewListing />} />
+            <Route path="/ViewListing" element={<ViewListing />} />
+          </Routes>
+          <Routes>
+            <Route path="/Listings" element={<Listings />} />
           </Routes>
         </Router>
       </div>

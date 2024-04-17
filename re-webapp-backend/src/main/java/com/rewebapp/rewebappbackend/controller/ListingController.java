@@ -18,8 +18,8 @@ public class ListingController {
     private final ListingService listingService;
 
     @GetMapping("/results/{query}/{pageNumber}")
-    public ResponseEntity<List<ListingResponse>> results(@PathVariable String query, @PathVariable Integer pageNumber){
-        return ResponseEntity.ok(listingService.getListings(query, pageNumber));
+    public ResponseEntity<List<ListingResponse>> results(@PathVariable String query, @PathVariable String pageNumber){
+        return ResponseEntity.ok(listingService.getListings(query, Integer.parseInt(pageNumber)));
     }
 
     @GetMapping("/details/{id}")
