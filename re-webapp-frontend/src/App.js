@@ -13,6 +13,7 @@ import PopupLogin from './components/PopupLogin'
 import PopupUser from './components/PopupUser'
 
 import ViewUser from './pages/ViewUser'
+import ViewListing from './pages/ViewListings.js'
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -84,7 +85,9 @@ function App() {
               element={<ViewUser />}
             />
           </Routes>
-          <Route path="/listing" element={<ViewListing />} />
+          <Routes>
+            <Route path="/listing" element={<ViewListing />} />
+          </Routes>
         </Router>
       </div>
     </>
@@ -95,4 +98,10 @@ export default App;
 
 /**
  * <Home authenticated={authenticated} setPopupLogin={setPopupLogin} setPopupRegister={setPopupRegister} />
- */
+ 
+
+</Routes >
+  <Route path="/listing" element={<ViewListing />} />
+        </Router >
+
+*/

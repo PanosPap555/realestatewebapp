@@ -1,35 +1,22 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
-const Search = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const history = useHistory();
+function Search() {
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearch = () => {
-    history.push(`/listing?query=${encodeURIComponent(searchQuery)}`);
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
   };
 
   return (
-    <div className="container">
-      <div className="row height d-flex justify-content-center align-items-center">
-        <div className="col-md-8">
-          <div className="search">
-            <i className="fa fa-search"></i>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Filter your search please."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button className="btn btn-primary" onClick={handleSearch}>
-              Search
-            </button>
-          </div>
-        </div>
-      </div>
+    <div>
+      <input
+        type="text"
+        placeholder="Search"
+        onChange={handleSearch}
+      />
+      <p>Searched term: {searchTerm}</p>
     </div>
   );
-};
+}
 
 export default Search;
