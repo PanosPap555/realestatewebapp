@@ -1,3 +1,23 @@
 .add-listing-wrapper{
-    
+    display: absolute;
+    transform: translateY(2.1cm);
+}
+
+.title-label {
+    color: white; /* Set text color to white */
+    background-color: #2e0f1f; /* Set background color to black */
+    font-weight: bold; /* Make text bold */
+    padding: 5px; /* Add padding for better readability */
+    font-size: 2rem;
+}
+
+.text-input-description input {
+    height: 200px; /* Adjust the height as needed */
+    resize: vertical; /* Allow vertical resizing */
+    padding: 10px; /* Add padding for better readability */
+    font-size: 1rem; /* Adjust font size as needed */
+}
+
+.form-label{
+    color: white;
 }

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 import "./css/AddListing.css"
 
-function AddListing({authenticated, username }) {
+function AddListing({ authenticated, username }) {
+    const [baseImage, setBaseImage] = useState("");
+
 
     const setMessage = (message) => {
         document.querySelector(".message-label").textContent = message
@@ -57,9 +59,8 @@ function AddListing({authenticated, username }) {
                 price: parseFloat(getPrice()),
                 latitude: parseFloat(getLatitude()),
                 longitude: parseFloat(getLongitude()),
-                imageData: getImageData()
+                image_data: baseImage
             })
-            console.log(response.data.errorCode);
             if (!response.data.errorCode) {
                 document.getElementById("title").value = "";
                 document.getElementById("description").value = "";
@@ -67,7 +68,7 @@ function AddListing({authenticated, username }) {
                 document.getElementById("price").value = "";
                 document.getElementById("latitude").value = "";
                 document.getElementById("longitude").value = "";
-                document.getElementById("image_data").value = "";
+                //document.getElementById("image_data").value = "";
                 handleClose();
                 return
             }
@@ -81,23 +82,42 @@ function AddListing({authenticated, username }) {
         }
     }
 
-    const uploadImage = (e) => {
-        console.log(e.target.files);
-    }
 
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+    
+          fileReader.onload = () => {
+            resolve(fileReader.result);
+          };
+    
+          fileReader.onerror = (error) => {
+            reject(error);
+          };
+        });
+      };
+
+    const uploadImage = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertBase64(file);
+        const base64Data = base64.split(',')[1];
+        console.log(base64Data)
+        setBaseImage(base64Data);
+    };
 
     return (
         <div className='add-listing-wrapper'>
-            <div className='login-text'>Sign Up!</div>
+            <div className='title-label'>Please Insert Listing Info</div>
             <hr></hr>
             <form onSubmit={(e) => handleListingAddition(e)}>
                 <div className="text-input">
                     <label htmlFor="title" className="form-label">Title</label> {/* Title */}
                     <input placeholder="Title" type="text" className="form-control" id="title" required />
                 </div>
-                <div className="text-input">
+                <div className="text-input-description">
                     <label htmlFor="description" className="form-label">Description</label> {/* Description */}
-                    <input placeholder="Description" type="text" className="form-control" id="description" required />
+                    <textarea placeholder="Description" type="text" className="form-control-description" id="description" required />
                 </div>
                 <div className="text-input">
                     <label htmlFor="address" className="form-label">Address</label> {/* Address */}
@@ -115,23 +135,17 @@ function AddListing({authenticated, username }) {
                     <label htmlFor="longitude" className="form-label">Longitude</label> {/* Longitude */}
                     <input placeholder="Longitude" type="text" className="form-control" id="longitude" required />
                 </div>
-                <div className="text-input">
-                    <label htmlFor="image_data" className="form-label">ImageData</label> {/* REMOVE THIS */}
-                    <input placeholder="ImageData" type="text" className="form-control" id="image_data" required />
-                </div>
-                
-                {/*<div className="image-input">
-                    <label htmlFor="image_data" className="form-label">ImageData</label> 
+                <div className="image-input">
+                    <label htmlFor="image_data" className="form-label">ImageData</label>
                     <div>
                         <input
-                         type="file"
-                         onChange={(e) => {
-                            uploadImage(e);
-                         }}
-                         />
+                            type="file"
+                            onChange={(e) => {
+                                uploadImage(e);
+                            }}
+                        />
                     </div>
                 </div>
-                        */}
                 <div>
                     <label className="message-label" id="message-label"></label>
                 </div>
