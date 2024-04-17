@@ -101,7 +101,7 @@ function App() {
           <Routes>
             <Route
               path="/AddListing" 
-              element={<AddListing authenticated={authenticated}/>}
+              element={<AddListing authenticated={authenticated} username={username} />}
             />
           </Routes>
         </Router>

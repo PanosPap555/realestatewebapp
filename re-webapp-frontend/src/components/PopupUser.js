@@ -7,16 +7,19 @@ export default function PopupUser({ onClose, setAuthenticated, username }) {
 
   const navigate = useNavigate();
 
+  //Go to /ViewUser
   const handleViewProfile = () => {
     navigate('/ViewUser');
     onClose();
   };
 
+  //Go to /AddListing
   const handleAddListing = () => {
     navigate('/AddListing');
     onClose();
   };
 
+  //On log out press
   const logout = () => {
     localStorage.clear()
     setAuthenticated(false)
@@ -35,7 +38,7 @@ export default function PopupUser({ onClose, setAuthenticated, username }) {
           </button>
         </div>
         <div>
-          <button type="button" className="btn btn-dark login-btn" onCLick={handleAddListing}>
+          <button type="button" className="btn btn-dark login-btn" onClick={handleAddListing}>
             Add Listing
           </button>
         </div>

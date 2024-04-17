@@ -91,7 +91,7 @@ export default function PopupRegister({ onClose, setAuthenticated, setUsername }
                 passwordRepeat: getPasswordRepeat()
             })
 
-            if (response.data.errorCode == null) {
+            if (!response.data.errorCode) {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('username', getUsername())
                 axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
