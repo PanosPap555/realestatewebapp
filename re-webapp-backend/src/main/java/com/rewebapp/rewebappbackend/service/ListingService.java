@@ -70,11 +70,9 @@ public class ListingService
                 String title = (String) obj[1];
                 String description = (String) obj[2];
                 Float price = (Float) obj[3];
-                byte[] imageData = (byte[]) obj[4];
+                String imageData = (String) obj[4];
 
-                String imageDataBase64 = imageData != null? Base64.getEncoder().encodeToString(imageData) : null;
-
-                ListingResponse listingResponse = new ListingResponse(id, title, description, price, imageDataBase64);
+                ListingResponse listingResponse = new ListingResponse(id, title, description, price, imageData);
                 response.add(listingResponse);
             }
             return response;
