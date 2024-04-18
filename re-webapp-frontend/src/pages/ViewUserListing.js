@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Listing from '../components/Listing';
 
-export default function ViewListings() {
+export default function ViewListings({setPopupDetails, setId, setTitle, setDescription, setPrice}) {
 
     const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ export default function ViewListings() {
             {listings && (
                 <div>
                     {listings.map((listings, index) => ( 
-                        <Listing key={index} listing={listings} /> 
+                        <Listing key={index} listing={listings} setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice}/> 
                     ))}
                 </div>
             )}

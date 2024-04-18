@@ -18,7 +18,7 @@ function Search() {
   return (
     <div>
       <form onSubmit={(e) => handleSearch(e)}>
-        <input type="text" placeholder="Search" id="query" />
+        <input type="text" placeholder="Search" id="query" required />
         <button type="submit" className='btn-dark search-bnt'> Search</button>
       </form>
     </div>

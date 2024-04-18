@@ -14,6 +14,7 @@ import ViewUser from './pages/ViewUser'
 import ViewUserListing from './pages/ViewUserListing'
 import AddListing from './pages/AddListing'
 import ViewListings from './pages/ViewListings'
+import PopupDetails from './components/PopupDetails.js';
 
 function App() {
 
@@ -24,6 +25,13 @@ function App() {
   const [popupLogin, setPopupLogin] = useState(false);
   const [popupRegister, setPopupRegister] = useState(false);
   const [popupUser, setPopupUser] = useState(false);
+  const [popupDetails, setPopupDetails] = useState(false);
+
+  /* for popup details */
+  const [id, setId] = useState(0)
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [price, setPrice] = useState(0)
 
   const closePopupLogin = () => {
     setPopupLogin(false);
@@ -35,6 +43,10 @@ function App() {
 
   const closePopupUser = () => {
     setPopupUser(false);
+  }
+  
+  const closePopupDetails = () => {
+    setPopupDetails(false);
   }
 
   /** check if valid token already exists */
@@ -72,7 +84,9 @@ function App() {
           {popupLogin && (<PopupLogin onClose={closePopupLogin} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
           {popupRegister && (<PopupRegister onClose={closePopupRegister} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
           {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} username={username} />)}
-          {popupLogin || popupRegister || popupUser ? (<div className="overlay-popup" />) : null}
+          {popupDetails && (<PopupDetails onClose={closePopupDetails} id={id} title={title} description={description} price={price} />)}
+
+          {popupLogin || popupRegister || popupUser || popupDetails ? (<div className="overlay-popup" />) : null}
           <Routes>
             <Route
               path="/"
@@ -84,10 +98,10 @@ function App() {
             />
             <Route
               path="/results/:query/:pageNumber"
-              element={<ViewListings />} />
+              element={<ViewListings setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} />} />
             <Route
               path="/user-listings/:username/:pageNumber"
-              element={<ViewUserListing />}
+              element={<ViewUserListing setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} />}
             />
 
 
