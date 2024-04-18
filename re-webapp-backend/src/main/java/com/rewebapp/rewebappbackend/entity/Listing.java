@@ -28,6 +28,6 @@ public class Listing {
     private Double longitude;
 
     @Lob
-    @Column(columnDefinition="BLOB")
+    @Column(columnDefinition="LONGBLOB")
     private byte[] imageData;
 }
