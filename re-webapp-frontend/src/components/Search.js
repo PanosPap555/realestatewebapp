@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Search() {
-  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+  let pageNumber = 0
+
+  const navigate = useNavigate();
+
+  const getQuery = () => {
+    return document.getElementById("query").value
   };
+
+  const handleSearch = async (e) => {
+    navigate(`/results/${getQuery()}/${pageNumber}/`)
+  }
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search"
-        onChange={handleSearch}
-      />
-      <p>Searched term: {searchTerm}</p>
+      <form onSubmit={(e) => handleSearch(e)}>
+        <input type="text" placeholder="Search" id="query" />
+        <button type="submit" className='btn-dark search-bnt'> Search</button>
+      </form>
     </div>
   );
 }

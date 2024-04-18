@@ -9,7 +9,7 @@ export default function PopupUser({ onClose, setAuthenticated, username }) {
 
   //Go to /ViewUser
   const handleViewProfile = () => {
-    navigate('/ViewUser');
+    navigate('/profile');
     onClose();
   };
 

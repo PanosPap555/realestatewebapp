@@ -1,54 +1,46 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Listings from './Listings';
+import Listing from '../components/Listing';
 
 export default function ViewListings() {
+
+    const navigate = useNavigate();
+
+    let { query, pageNumber } = useParams();
+    pageNumber = parseInt(pageNumber);
+
     const [listings, setListings] = useState([]);
-    const [query, setQuery] = useState('view');
-    const [pageNumber, setPageNumber] = useState(0);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/results/${query}/${pageNumber}`);
+            console.log(response.data)
+            setListings(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            console.log("useEffect executed");
-            try {
-                const response = await axios.get(`http://localhost:8080/results/${query}/${pageNumber}`);
-                console.log(response.data);
-
-                // Update listings state with the fetched data
-                setListings(response.data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
+        if (!localStorage.getItem('token')) {
+            navigate("/")
+            return
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
+        
         fetchData();
-    }, [query, pageNumber]);
-
-    const handleQueryChange = (event) => {
-        setQuery(event.target.value);
-    };
-
-    const handlePageNumberChange = (event) => {
-        setPageNumber(event.target.value);
-    };
+    }, []);
 
     return (
         <div>
-            <input type="text" value={query} onChange={handleQueryChange} placeholder="Search..." />
-            <input type="number" value={pageNumber} onChange={handlePageNumberChange} placeholder="Page number..." />
             {listings && (
                 <div>
-                    {listings.map((listing, index) => ( // Added index as the second argument
-                        <Listings key={index} listings={listing} /> // Used index as the key
+                    {listings.map((listings, index) => (
+                        <Listing key={index} listing={listings} />
                     ))}
                 </div>
             )}
         </div>
     );
 }
-
-/*<div>
-      {listings.map((item) => (
-        <Listing key={item} item={`Listing ${item}`} />
-      ))}
-    </div>*/

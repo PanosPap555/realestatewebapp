@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import "./css//Home.css"
-import ListingDetailsPopup from '../components/ListingDetailsPopup';
-//import Search from '../components/Search';
+import Search from '../components/Search';
 
 export default function Home({ authenticated, setPopupLogin, setPopupRegister, username }) {
     const [showListingDetails, setShowListingDetails] = useState(false);
@@ -14,14 +13,6 @@ export default function Home({ authenticated, setPopupLogin, setPopupRegister, u
         setPopupRegister(true);
     };
 
-    const openListingDetails = () => {
-        setShowListingDetails(true);
-    };
-
-    const closeListingDetails = () => {
-        setShowListingDetails(false);
-    };
-
     return (
         <div className="home">
             <div className='explore-div'>
@@ -32,11 +23,7 @@ export default function Home({ authenticated, setPopupLogin, setPopupRegister, u
                     <div className='auth-welcome'>
                         <div>Welcome aboard <span className={'auth-highlight-username'}>{username}</span>!</div>
                     </div>
-                    <div><button type="button" className="btn btn-dark " onClick={openListingDetails}>View Details</button></div>
-                    <div className="d-flex justify-content-end"> {/* Add this div */}
-                        search
-                    </div>
-                    {showListingDetails && <ListingDetailsPopup onClose={closeListingDetails} />}
+                    <Search />
                 </>
             ) : (
                 <div className='not-auth-text'>

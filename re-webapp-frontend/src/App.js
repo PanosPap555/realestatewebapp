@@ -1,7 +1,7 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
 import './App.css'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
@@ -15,8 +15,8 @@ import ViewUserListing from './pages/ViewUserListing'
 import AddListing from './pages/AddListing'
 import ViewListings from './pages/ViewListings'
 
-
 function App() {
+
   const [authenticated, setAuthenticated] = useState(false);
   const [username, setUsername] = useState('Username');
 
@@ -79,16 +79,25 @@ function App() {
               element={<Home authenticated={authenticated} setPopupLogin={setPopupLogin} setPopupRegister={setPopupRegister} username={username} />}
             />
             <Route
-              path="/ViewUser"
-              element={<ViewUser authenticated={authenticated} username={username} />}
+              path="/profile"
+              element={<ViewUser />}
             />
             <Route
-              path="/ViewUserListing"
-              element={<ViewUserListing authenticated={authenticated} username={username} />}
-            />
-            <Route
-              path="/Listings"
+              path="/results/:query/:pageNumber"
               element={<ViewListings />} />
+            <Route
+              path="/user-listings/:username/:pageNumber"
+              element={<ViewUserListing />}
+            />
+
+
+
+
+
+
+
+            
+
             <Route
               path="/AddListing"
               element={<AddListing authenticated={authenticated} username={username} />}
