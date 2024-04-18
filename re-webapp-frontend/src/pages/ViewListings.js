@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Listing from '../components/Listing';
 
-export default function ViewListings({setPopupDetails, setId, setTitle, setDescription, setPrice, setImageData}) {
+export default function ViewListings({ setPopupDetails, setId, setTitle, setDescription, setPrice, setImageData }) {
 
     const navigate = useNavigate();
 
@@ -27,19 +27,30 @@ export default function ViewListings({setPopupDetails, setId, setTitle, setDescr
             return
         }
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
-        
+
         fetchData();
-    }, []);
+    }, [[pageNumber]]);
+
+    const goToPage = (page) => {
+        navigate(`/results/${query}/${page}`);
+    };
 
     return (
-        <div>
+        <div className="page-wrapper">
+            <div className="view-listing-wrapper">
             {listings && (
                 <div>
                     {listings.map((listings, index) => (
-                        <Listing key={index} listing={listings} setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} setImageData={setImageData}/>
+                        <Listing key={index} listing={listings} setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} setImageData={setImageData} />
                     ))}
                 </div>
             )}
+            </div>
+            <div className="buttons-wrapper">
+                <button className="prev-button" onClick={() => goToPage(Math.max(pageNumber - 1, 0))}>&larr; Previous</button>
+                <button className="next-button" onClick={() => goToPage(Math.min(pageNumber + 1, 5))}>Next &rarr;</button>
+            </div>
         </div>
+
     );
 }

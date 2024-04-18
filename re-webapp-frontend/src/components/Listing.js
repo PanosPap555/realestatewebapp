@@ -19,7 +19,7 @@ const Listing = ({ listing, setPopupDetails, setId, setTitle, setDescription, se
                 <img src={listing.imageData} alt={listing.title} />
             </div>
             <p>{listing.description}</p>
-            <button onClick={openPopupDetails} className='login-an'>details</button>
+            <button onClick={openPopupDetails} className='login-an'>Details</button>
         </div>
     );
 };
