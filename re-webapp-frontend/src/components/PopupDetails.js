@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./css/PopupDetails.css"
 
-export default function PopupDetails({ onClose, id, title, description, price }) {
+export default function PopupDetails({ onClose, id, title, description, price, imageData }) {
     const [address, setAddress] = useState("");
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);

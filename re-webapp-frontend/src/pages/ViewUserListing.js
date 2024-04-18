@@ -4,7 +4,7 @@ import axios from 'axios';
 import Listing from '../components/Listing';
 import './css/ViewListing.css'
 
-export default function ViewListings({ setPopupDetails, setId, setTitle, setDescription, setPrice }) {
+export default function ViewListings({ setPopupDetails, setId, setTitle, setDescription, setPrice, setImageData }) {
 
     const navigate = useNavigate();
 
@@ -42,7 +42,7 @@ export default function ViewListings({ setPopupDetails, setId, setTitle, setDesc
             <div>
                 {listings.map((listings, index) => (
                     <div className="listing-container">
-                        <Listing key={index} listing={listings} setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} />
+                        <Listing key={index} listing={listings} setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} setImageData={setImageData}/>
                     </div>
                 ))}
             </div>

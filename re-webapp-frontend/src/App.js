@@ -32,6 +32,7 @@ function App() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [price, setPrice] = useState(0)
+  const [imageData, setImageData] = userState("")
 
   const closePopupLogin = () => {
     setPopupLogin(false);
@@ -44,7 +45,7 @@ function App() {
   const closePopupUser = () => {
     setPopupUser(false);
   }
-  
+
   const closePopupDetails = () => {
     setPopupDetails(false);
   }
@@ -84,7 +85,7 @@ function App() {
           {popupLogin && (<PopupLogin onClose={closePopupLogin} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
           {popupRegister && (<PopupRegister onClose={closePopupRegister} setAuthenticated={setAuthenticated} setUsername={setUsername} />)}
           {popupUser && (<PopupUser onClose={closePopupUser} setAuthenticated={setAuthenticated} username={username} />)}
-          {popupDetails && (<PopupDetails onClose={closePopupDetails} id={id} title={title} description={description} price={price} />)}
+          {popupDetails && (<PopupDetails onClose={closePopupDetails} id={id} title={title} description={description} price={price} imageData={imageData} />)}
 
           {popupLogin || popupRegister || popupUser || popupDetails ? (<div className="overlay-popup" />) : null}
           <Routes>
@@ -98,10 +99,11 @@ function App() {
             />
             <Route
               path="/results/:query/:pageNumber"
-              element={<ViewListings setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} />} />
+              element={<ViewListings setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} setImageData={setImageData} />}
+            />
             <Route
               path="/user-listings/:username/:pageNumber"
-              element={<ViewUserListing setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} />}
+              element={<ViewUserListing setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} setImageData={setImageData} />}
             />
 
 
@@ -110,7 +112,7 @@ function App() {
 
 
 
-            
+
 
             <Route
               path="/AddListing"
