@@ -43,7 +43,8 @@ public class ListingService
                 Float price = (Float) obj[3];
                 byte[] imageData = (byte[]) obj[4];
 
-                String imageDataString = new String(imageData, StandardCharsets.UTF_8);
+                String imageDataString = imageData != null? new String(imageData, StandardCharsets.UTF_8): null;
+
                 ListingResponse listingResponse = new ListingResponse(id, title, description, price, imageDataString);
                 response.add(listingResponse);
             }
@@ -72,7 +73,8 @@ public class ListingService
                 Float price = (Float) obj[3];
                 byte[] imageData = (byte[]) obj[4];
 
-                String imageDataString = new String(imageData, StandardCharsets.UTF_8);
+                String imageDataString = imageData != null? new String(imageData, StandardCharsets.UTF_8): null;
+
                 ListingResponse listingResponse = new ListingResponse(id, title, description, price, imageDataString);
                 response.add(listingResponse);
             }
