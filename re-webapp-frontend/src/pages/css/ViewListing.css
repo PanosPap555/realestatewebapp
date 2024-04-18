@@ -17,7 +17,9 @@
     border: 1px solid black;
     border-radius: 10px;
     padding: 15px;
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 3%;
+    box-shadow: 0 0 3px white;
 }
 
 .view-listing-wrapper .listing-item h3 {

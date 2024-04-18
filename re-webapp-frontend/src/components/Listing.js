@@ -14,7 +14,7 @@ const Listing = ({ listing, setPopupDetails, setId, setTitle, setDescription, se
 
     return (
         <div className="listing-item">
-            <h3>{listing.title}</h3>
+            <h2>{listing.title}</h2>
             <div className="image-container">
                 <img src={listing.imageData} alt={listing.title} />
             </div>
