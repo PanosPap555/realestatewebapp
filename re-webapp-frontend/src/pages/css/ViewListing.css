@@ -43,18 +43,27 @@
     border-radius: 5px;
 }
 
-.prev-button {
+.buttons-wrapper {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1001;
 }
 
+.prev-button,
 .next-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.buttons-wrapper{
-    transform: translateY(5.1cm);
+.prev-button:hover,
+.next-button:hover {
+    background-color: #444;
 }
