@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './css/Search.css';
 
 function Search() {
 
@@ -16,10 +17,10 @@ function Search() {
   }
 
   return (
-    <div>
+    <div className="search-container">
       <form onSubmit={(e) => handleSearch(e)}>
-        <input type="text" placeholder="Search" id="query" required />
-        <button type="submit" className='btn-dark search-bnt'> Search</button>
+        <input type="text" placeholder="Search" id="query" required className="search-input" />
+        <button type="submit" className='btn-dark search-btn'> Search</button>
       </form>
     </div>
   );
