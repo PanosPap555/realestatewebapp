@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import Listing from '../components/Listing';
+import './css/ViewListing.css'
 
-export default function ViewListings({setPopupDetails, setId, setTitle, setDescription, setPrice}) {
+export default function ViewListings({ setPopupDetails, setId, setTitle, setDescription, setPrice }) {
 
     const navigate = useNavigate();
 
@@ -27,19 +28,29 @@ export default function ViewListings({setPopupDetails, setId, setTitle, setDescr
             return
         }
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
-        
+
         fetchData();
     }, []);
 
+    const goToPage = (page) => {
+        navigate(`/user-listings/${username}/${page}`);
+    };
+
     return (
-        <div>
-            {listings && (
-                <div>
-                    {listings.map((listings, index) => ( 
-                        <Listing key={index} listing={listings} setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice}/> 
-                    ))}
-                </div>
-            )}
+        <div className="view-user-listing-wrapper" >
+            listings && (
+            <div>
+                {listings.map((listings, index) => (
+                    <div className="listing-container">
+                        <Listing key={index} listing={listings} setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} />
+                    </div>
+                ))}
+            </div>
+            )
+            <div>
+                <button className="prev-button" onClick={() => goToPage(pageNumber - 1)}>Previous</button>
+                <button className="next-button" onClick={() => goToPage(pageNumber + 1)}>Next</button>
+            </div>
         </div>
-    );
+    )
 }
