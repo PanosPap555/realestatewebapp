@@ -38,15 +38,15 @@ export default function ViewListings({ setPopupDetails, setId, setTitle, setDesc
 
     return (
         <div className="view-user-listing-wrapper" >
-            listings && (
+            {listings && (
             <div>
                 {listings.map((listings, index) => (
-                    <div className="listing-container">
-                        <Listing key={index} listing={listings} setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} setImageData={setImageData}/>
+                    <div key={index} className="listing-container">
+                        <Listing listing={listings} setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} setImageData={setImageData} />
                     </div>
                 ))}
             </div>
-            )
+            )}
             <div>
                 <button className="prev-button" onClick={() => goToPage(pageNumber - 1)}>Previous</button>
                 <button className="next-button" onClick={() => goToPage(pageNumber + 1)}>Next</button>
