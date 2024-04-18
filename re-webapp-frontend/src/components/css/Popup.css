@@ -10,6 +10,12 @@
     color: lightgray;
     border-radius: 7%;
     box-shadow: 0 0 3px #9F2B68;
+    max-width: 20%;
+    word-wrap: break-word;
+}
+
+.listing-description{
+    text-wrap: balance;
 }
 
 .btns {
@@ -93,4 +99,10 @@
     display: flex;
     flex-direction: row;
     justify-content: center; 
+}
+
+.detail-btns{
+    margin-right: 1rem;
+    margin-top: 1rem;
+
 }

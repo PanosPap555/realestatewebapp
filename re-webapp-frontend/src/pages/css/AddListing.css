@@ -1,23 +1,72 @@
-.add-listing-wrapper{
-    display: absolute;
-    transform: translateY(2.1cm);
-}
+.add-listing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .add-listing-wrapper {
+    width: 50%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color:lightgrey;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 1.3rem;
+    text-align: left;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .title-label {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-control,
+  .form-control-description {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-control-description {
+    height: 100px;
+  }
+  
+  .image-input {
+    margin-bottom: 20px;
+  }
+  
+  .message-group {
+    margin-bottom: 20px;
+  }
+  
+  .message-label {
+    color: red;
+  }
+  
+  .button-group {display: flex;
+    justify-content: center;
+  }
+  
+  .register-btn,
+  .close-btn {
+    margin: 0 10px;
+  }
 
-.title-label {
-    color: white; /* Set text color to white */
-    background-color: #2e0f1f; /* Set background color to black */
-    font-weight: bold; /* Make text bold */
-    padding: 5px; /* Add padding for better readability */
-    font-size: 2rem;
-}
-
-.text-input-description input {
-    height: 200px; /* Adjust the height as needed */
-    resize: vertical; /* Allow vertical resizing */
-    padding: 10px; /* Add padding for better readability */
-    font-size: 1rem; /* Adjust font size as needed */
-}
-
-.form-label{
-    color: white;
-}
+  .button-container {
+    text-align: center;
+  }

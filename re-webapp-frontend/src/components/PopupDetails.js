@@ -33,24 +33,26 @@ export default function PopupDetails({ onClose, id, title, description, price, i
                 <hr />
                 <div className='listing-details'>
                     <div className='listing-image'>
-                        image here
+                        {/* Add your image here */}
                     </div>
                     <div className='listing-info'>
-                        <div className='listing-id'>{id}</div>
-                        <div className='listing-title'>{title}</div>
-                        <div className='listing-description'>{description}</div>
-                        <div className='listing-price'>{price}</div>
-                        <div className='listing-address'>{address}</div>
-                        <div className='listing-latitude'>{latitude}</div>
-                        <div className='listing-longitude'>{longitude}</div>
-                        <div className='user-username'>{username}</div>
-                        <div className='user-username'>{email}</div>
+                        <div className='listing-title'><strong>Title:</strong> {title}</div>
+                        <div className='listing-description'><strong>Description:</strong> {description}</div>
+                        <div className='listing-price'><strong>Price:</strong> {price}</div>
+                        <div className='listing-address'><strong>Address:</strong> {address}</div>
+                        <div className='listing-latitude'><strong>Latitude:</strong> {latitude}</div>
+                        <div className='listing-longitude'><strong>Longitude:</strong> {longitude}</div>
+                        <div className='user-info'>
+                            <div className='user-username'><strong>Username:</strong> {username}</div>
+                            <div className='user-email'><strong>Email:</strong> {email}</div>
+                        </div>
                     </div>
                 </div>
-                <div className='btns'>
+                <div className='btns detail-btns'>
                     <button type="button" className="btn btn-dark close-btn" onClick={onClose}>Close</button>
                 </div>
             </div>
         </div>
     );
+
 }
