@@ -1,18 +1,17 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import "./css/AddListing.css"
 
 function AddListing({ authenticated, username }) {
-    const [baseImage, setBaseImage] = useState("");
 
+    const navigate = useNavigate();
+
+    const [image, setImage] = useState(null);
 
     const setMessage = (message) => {
         document.querySelector(".message-label").textContent = message
     };
-
-    const getMessage = () => {
-        return document.getElementById("message-label").value
-    }
 
     const getTitle = () => {
         return document.getElementById("title").value
@@ -38,13 +37,8 @@ function AddListing({ authenticated, username }) {
         return document.getElementById("longitude").value
     };
 
-    const getImageData = () => {
-        return document.getElementById("image_data").value
-    };
-
     const handleClose = () => {
-        // Redirect to the main page
-        window.location.href = "/";
+        navigate("/")
     };
 
     const handleListingAddition = async (e) => {
@@ -59,22 +53,9 @@ function AddListing({ authenticated, username }) {
                 price: parseFloat(getPrice()),
                 latitude: parseFloat(getLatitude()),
                 longitude: parseFloat(getLongitude()),
-                image_data: baseImage
+                imageData: image
             })
-            if (!response.data.errorCode) {
-                document.getElementById("title").value = "";
-                document.getElementById("description").value = "";
-                document.getElementById("address").value = "";
-                document.getElementById("price").value = "";
-                document.getElementById("latitude").value = "";
-                document.getElementById("longitude").value = "";
-                //document.getElementById("image_data").value = "";
-                handleClose();
-                return
-            }
-
-            /* handle error */
-            setMessage(response.data.errorCode)
+            handleClose()
         }
         catch (ex) {
             console.log(ex);
@@ -82,28 +63,18 @@ function AddListing({ authenticated, username }) {
         }
     }
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0]
+        if (!file) return;
 
-    const convertBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-          const fileReader = new FileReader();
-          fileReader.readAsDataURL(file);
-    
-          fileReader.onload = () => {
-            resolve(fileReader.result);
-          };
-    
-          fileReader.onerror = (error) => {
-            reject(error);
-          };
-        });
-      };
+        const reader = new FileReader();
 
-    const uploadImage = async (e) => {
-        const file = e.target.files[0];
-        const base64 = await convertBase64(file);
-        const base64Data = base64.split(',')[1];
-        console.log(base64Data)
-        setBaseImage(base64Data);
+        reader.onloadend = () => {
+            const imageData = reader.result;
+            setImage(imageData);
+        };
+        
+        reader.readAsDataURL(file);
     };
 
     return (
@@ -140,9 +111,7 @@ function AddListing({ authenticated, username }) {
                     <div>
                         <input
                             type="file"
-                            onChange={(e) => {
-                                uploadImage(e);
-                            }}
+                            onChange={handleImageChange}
                         />
                     </div>
                 </div>

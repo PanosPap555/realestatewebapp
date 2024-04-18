@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -42,9 +43,8 @@ public class ListingService
                 Float price = (Float) obj[3];
                 byte[] imageData = (byte[]) obj[4];
 
-                String imageDataBase64 = imageData != null? Base64.getEncoder().encodeToString(imageData) : null;
-
-                ListingResponse listingResponse = new ListingResponse(id, title, description, price, imageDataBase64);
+                String imageDataString = new String(imageData, StandardCharsets.UTF_8);
+                ListingResponse listingResponse = new ListingResponse(id, title, description, price, imageDataString);
                 response.add(listingResponse);
             }
             return response;
@@ -72,9 +72,8 @@ public class ListingService
                 Float price = (Float) obj[3];
                 byte[] imageData = (byte[]) obj[4];
 
-                String imageDataBase64 = imageData != null? Base64.getEncoder().encodeToString(imageData) : null;
-
-                ListingResponse listingResponse = new ListingResponse(id, title, description, price, imageDataBase64);
+                String imageDataString = new String(imageData, StandardCharsets.UTF_8);
+                ListingResponse listingResponse = new ListingResponse(id, title, description, price, imageDataString);
                 response.add(listingResponse);
             }
             return response;
@@ -113,9 +112,8 @@ public class ListingService
                     .price(request.getPrice())
                     .latitude(request.getLatitude())
                     .longitude(request.getLongitude())
-                    .imageData(request.getImageData())
+                    .imageData(request.getImageData().getBytes())
                     .build();
-
             listingRepo.save(listing);
         }
         catch(Exception e){

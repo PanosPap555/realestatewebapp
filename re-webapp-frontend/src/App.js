@@ -1,7 +1,7 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
 import './App.css'
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
@@ -105,18 +105,9 @@ function App() {
               path="/user-listings/:username/:pageNumber"
               element={<ViewUserListing setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} setImageData={setImageData} />}
             />
-
-
-
-
-
-
-
-
-
             <Route
-              path="/AddListing"
-              element={<AddListing authenticated={authenticated} username={username} />}
+              path="/add-listing"
+              element={<AddListing />}
             />
           </Routes>
         </Router>

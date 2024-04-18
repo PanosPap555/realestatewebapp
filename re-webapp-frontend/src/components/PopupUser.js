@@ -15,7 +15,7 @@ export default function PopupUser({ onClose, setAuthenticated, username }) {
 
   //Go to /AddListing
   const handleAddListing = () => {
-    navigate('/AddListing');
+    navigate('/add-listing');
     onClose();
   };
 

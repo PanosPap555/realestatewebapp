@@ -13,5 +13,5 @@ public class ListingRequest {
     private Float price;
     private Double latitude;
     private Double longitude;
-    private byte[] imageData;
+    private String imageData;
 }
