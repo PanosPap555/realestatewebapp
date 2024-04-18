@@ -30,16 +30,16 @@ export default function ViewListings({ setPopupDetails, setId, setTitle, setDesc
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
 
         fetchData();
-    }, []);
+    }, [[pageNumber]]);
 
     const goToPage = (page) => {
         navigate(`/user-listings/${username}/${page}`);
     };
 
     return (
-        <div className="view-user-listing-wrapper" >
+        <div>
             listings && (
-            <div>
+            <div className="view-user-listing-wrapper">
                 {listings.map((listings, index) => (
                     <div className="listing-container">
                         <Listing key={index} listing={listings} setPopupDetails={setPopupDetails} setId={setId} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} setImageData={setImageData}/>
@@ -47,9 +47,9 @@ export default function ViewListings({ setPopupDetails, setId, setTitle, setDesc
                 ))}
             </div>
             )
-            <div>
-                <button className="prev-button" onClick={() => goToPage(pageNumber - 1)}>Previous</button>
-                <button className="next-button" onClick={() => goToPage(pageNumber + 1)}>Next</button>
+            <div className="buttons-wrapper">
+                <button className="prev-button" onClick={() => goToPage(Math.max(pageNumber - 1, 0))}>Previous</button>
+                <button className="next-button" onClick={() => goToPage(Math.min(pageNumber + 1, 5))}>Next</button>
             </div>
         </div>
     )

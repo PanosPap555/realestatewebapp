@@ -59,7 +59,10 @@
 }
 
 .listing-description-container {
+    max-height: 200px;
     margin-bottom: 10px;
+    overflow-y: auto;
+    word-wrap: break-word;
 }
 
 .listing-description {

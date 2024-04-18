@@ -32,7 +32,7 @@ function App() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [price, setPrice] = useState(0)
-  const [imageData, setImageData] = userState("")
+  const [imageData, setImageData] = useState("")
 
   const closePopupLogin = () => {
     setPopupLogin(false);

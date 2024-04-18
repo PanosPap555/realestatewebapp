@@ -14,22 +14,22 @@
 }
 
 .view-user-listing-wrapper .listing-item {
-    border: 1px solid #641b42;
+    border: 1px solid black;
     border-radius: 10px;
     padding: 15px;
-    background-color: #030102;
+    background-color: #333;
 }
 
 .view-user-listing-wrapper .listing-item h3 {
     margin: 0;
     font-size: 18px;
-    color: #9F2B68;
+    color: white;
 }
 
 .view-user-listing-wrapper .listing-item p {
     margin: 10px 0;
     font-size: 14px;
-    color: #9F2B68;
+    color: white;
     font-weight: bold;
 }
 
@@ -43,16 +43,18 @@
     border-radius: 5px;
 }
 
-/* Move the previous button to the top left corner */
 .prev-button {
     position: fixed;
     top: 20px;
     left: 20px;
 }
 
-/* Move the next button to the top right corner */
 .next-button {
     position: fixed;
     top: 20px;
     right: 20px;
+}
+
+.buttons-wrapper{
+    transform: translateY(5.1cm);
 }
