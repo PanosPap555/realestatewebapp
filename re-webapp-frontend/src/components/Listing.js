@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './css/Listing.css';
 
 const Listing = ({ listing, setPopupDetails, setId, setTitle, setDescription, setPrice, setImageData }) => {
 
@@ -19,7 +19,7 @@ const Listing = ({ listing, setPopupDetails, setId, setTitle, setDescription, se
                 <img src={listing.imageData} alt={listing.title} />
             </div>
             <p>{listing.description}</p>
-            <button onClick={openPopupDetails} className='login-an'>Details</button>
+            <button onClick={openPopupDetails} className='btn lighter-btn'>Details</button>
         </div>
     );
 };

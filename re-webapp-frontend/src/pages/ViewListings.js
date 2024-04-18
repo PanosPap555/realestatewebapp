@@ -48,7 +48,7 @@ export default function ViewListings({ setPopupDetails, setId, setTitle, setDesc
             </div>
             <div className="buttons-wrapper">
                 <button className="prev-button" onClick={() => goToPage(Math.max(pageNumber - 1, 0))}>&larr; Previous</button>
-                <button className="next-button" onClick={() => goToPage(Math.min(pageNumber + 1, 5))}>Next &rarr;</button>
+                <button className="next-button" onClick={() => goToPage(Math.min(pageNumber + 1, 99))}>Next &rarr;</button>
             </div>
         </div>
 
