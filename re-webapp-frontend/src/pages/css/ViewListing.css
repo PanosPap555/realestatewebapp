@@ -1,4 +1,4 @@
-.view-user-listing-wrapper {
+.view-listing-wrapper {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -7,52 +7,63 @@
     position: relative;
 }
 
-.view-user-listing-wrapper .listing-container {
+.view-listing-wrapper .listing-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
 
-.view-user-listing-wrapper .listing-item {
-    border: 1px solid #641b42;
+.view-listing-wrapper .listing-item {
+    border: 1px solid black;
     border-radius: 10px;
     padding: 15px;
-    background-color: #030102;
+    background-color: #333;
 }
 
-.view-user-listing-wrapper .listing-item h3 {
+.view-listing-wrapper .listing-item h3 {
     margin: 0;
     font-size: 18px;
-    color: #9F2B68;
+    color: white;
 }
 
-.view-user-listing-wrapper .listing-item p {
+.view-listing-wrapper .listing-item p {
     margin: 10px 0;
     font-size: 14px;
-    color: #9F2B68;
+    color: white;
     font-weight: bold;
 }
 
-.view-user-listing-wrapper .listing-item .image-container {
+.view-listing-wrapper .listing-item .image-container {
     margin-bottom: 10px;
 }
 
-.view-user-listing-wrapper .listing-item .image-container img {
+.view-listing-wrapper .listing-item .image-container img {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
 }
 
-/* Move the previous button to the top left corner */
-.prev-button {
+.buttons-wrapper {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1001;
 }
 
-/* Move the next button to the top right corner */
+.prev-button,
 .next-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.prev-button:hover,
+.next-button:hover {
+    background-color: #444;
 }
