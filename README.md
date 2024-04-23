@@ -8,7 +8,8 @@ This is the final project of the course Special Topics in Software Engineering.
 
 Backend: Java Spring Boot\
 Database: mySQL\
-Frontend: ReactJS
+Frontend: ReactJS\
+Authentication/Authorization: JWT
 
 
 ## Screenshots
